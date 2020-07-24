@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
     app:
-        user: $UID:$GID
+        # user: $UID:$GID
         build:
             context: .
         ports:
@@ -10,5 +10,4 @@ services:
         volumes:
             - ./app:/app
         command: >
-            zsh -c "conda activate Django"
-            zsh -c "python manage.py runserver 0.0.0.0:8000"
+            sh -c "python manage.py runserver 0.0.0.0:8000"
