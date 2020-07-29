@@ -4,8 +4,8 @@ from django.db import connections
 from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
 # https://docs.djangoproject.com/en/3.0/howto/custom-management-commands/
-
 # This command is used to wait until the database is connected to Django.
+
 
 class Command(BaseCommand):
     """Django command to pause execution until database is available"""
@@ -15,7 +15,8 @@ class Command(BaseCommand):
         db_conn = None
         while not db_conn:
             try:
-                db_conn = connections['default'] # Will change value when the db is connected
+                db_conn = connections['default']
+                # Will change value when the db is connected
             except OperationalError:
                 self.stdout.write('Database unavailable, waiting 1 second...')
                 time.sleep(1)

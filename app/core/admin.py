@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _ # convert the text to be reada
 from core import models
 
 
-# Register your models here.
+  # Register your models here.
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
     list_display = ['email', 'name']
@@ -30,4 +30,3 @@ admin.site.register(models.User, UserAdmin)
 # admin.site.register(models.Tag)
 # admin.site.register(models.Ingredient)
 # admin.site.register(models.Recipe)
-

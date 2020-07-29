@@ -7,12 +7,12 @@ from django.urls import reverse
 class AdminSiteTests(TestCase):
 
     def setUp(self):
-        self.client = Client() # Create Client
+        self.client = Client()  # Create Client
         self.admin_user = get_user_model().objects.create_superuser(
             email='admin@londonappdev.com',
             password='password123'
-        ) # Create Admin
-        self.client.force_login(self.admin_user) # Log Admin to the system
+        )  # Create Admin
+        self.client.force_login(self.admin_user)  # Log Admin to the system
         self.user = get_user_model().objects.create_user(
             email='test@londonappdev.com',
             password='password123',
@@ -22,7 +22,7 @@ class AdminSiteTests(TestCase):
     def test_users_listed(self):
         """Test that users are listed on user page"""
         url = reverse('admin:core_user_changelist')
-        res = self.client.get(url) #Will pull out the url for the user
+        res = self.client.get(url)  # Will pull out the url for the user
 
         self.assertContains(res, self.user.name)
         self.assertContains(res, self.user.email)
