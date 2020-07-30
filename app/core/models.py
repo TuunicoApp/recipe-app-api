@@ -5,6 +5,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
 from django.conf import settings
 
 # Create your models here.
+
+
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
@@ -46,7 +48,7 @@ class Tag(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-      # In settings AUTH_USER_MODEL = 'core.User'
+# In settings AUTH_USER_MODEL = 'core.User'
 
     def __str__(self):
         return self.name

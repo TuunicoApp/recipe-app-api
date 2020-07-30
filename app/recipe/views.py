@@ -1,14 +1,15 @@
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework import viewsets, mixins, status
+# from rest_framework.decorators import action
+# from rest_framework.response import Response
+from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Tag#, Ingredient, Recipe
+from core.models import Tag
 
 from recipe import serializers
 
-class TagViewSet(viewsets.GenericViewSet, 
+
+class TagViewSet(viewsets.GenericViewSet,
                  mixins.ListModelMixin,
                  mixins.CreateModelMixin):
     """Manage tags in the database"""

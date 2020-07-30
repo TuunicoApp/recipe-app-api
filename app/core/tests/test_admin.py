@@ -4,6 +4,7 @@ from django.urls import reverse
 
 # https://docs.djangoproject.com/en/2.2/topics/testing/tools/#overview-and-a-quick-example
 
+
 class AdminSiteTests(TestCase):
 
     def setUp(self):
@@ -17,7 +18,7 @@ class AdminSiteTests(TestCase):
             email='test@londonappdev.com',
             password='password123',
             name='Test user full name'
-        ) # Create a spare user
+        )  # Create a spare user
 
     def test_users_listed(self):
         """Test that users are listed on user page"""

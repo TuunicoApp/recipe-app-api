@@ -15,6 +15,7 @@ ME_URL = reverse('user:me')
 def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
+
 class PublicUserApiTests(TestCase):
     """Test the users API (public)"""
 
@@ -33,7 +34,7 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         user = get_user_model().objects.get(**res.data)
         self.assertTrue(user.check_password(payload['password']))
-        self.assertNotIn('password', res.data) 
+        self.assertNotIn('password', res.data)
         # Password is not return
 
     def test_user_exists(self):
