@@ -66,6 +66,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         return self.serializer_class
 
+    def perform_create(self, serializer):
+        """Create a new recipe"""
+        serializer.save(user=self.request.user)
+
+
 #     def _params_to_ints(self, qs):
 #         """Convert a list of string IDs to a list of integers"""
 #         return [int(str_id) for str_id in qs.split(',')]
@@ -92,10 +97,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
     #         return serializers.RecipeImageSerializer
 
     #     return self.serializer_class
-
-#     def perform_create(self, serializer):
-#         """Create a new recipe"""
-#         serializer.save(user=self.request.user)
 
 #     @action(methods=['POST'], detail=True, url_path='upload-image')
 #     def upload_image(self, request, pk=None):
