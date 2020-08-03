@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Tag, Ingredient
+from core.models import Tag, Ingredient, Recipe
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -21,30 +21,32 @@ class IngredientSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
 
-# class RecipeSerializer(serializers.ModelSerializer):
-#     """Serialize a recipe"""
-#     ingredients = serializers.PrimaryKeyRelatedField(
-#         many=True,
-#         queryset=Ingredient.objects.all()
-#     )
-#     tags = serializers.PrimaryKeyRelatedField(
-#         many=True,
-#         queryset=Tag.objects.all()
-#     )
+class RecipeSerializer(serializers.ModelSerializer):
+    """Serialize a recipe"""
+    ingredients = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Ingredient.objects.all()
+    )
+    tags = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Tag.objects.all()
+    )
 
-#     class Meta:
-#         model = Recipe
-#         fields = (
-#             'id', 'title', 'ingredients', 'tags', 'time_minutes',
-#             'price', 'link'
-#         )
-#         read_only_fields = ('id',)
+    class Meta:
+        model = Recipe
+        fields = (
+            'id', 'title', 'ingredients', 'tags', 'time_minutes',
+            'price', 'link'
+        )
+        read_only_fields = ('id',)
+
+# https://www.django-rest-framework.org/api-guide/relations/#primarykeyrelatedfield
 
 
-# class RecipeDetailSerializer(RecipeSerializer):
-#     """Serialize a recipe detail"""
-#     ingredients = IngredientSerializer(many=True, read_only=True)
-#     tags = TagSerializer(many=True, read_only=True)
+class RecipeDetailSerializer(RecipeSerializer):
+    """Serialize a recipe detail"""
+    ingredients = IngredientSerializer(many=True, read_only=True)
+    tags = TagSerializer(many=True, read_only=True)
 
 
 # class RecipeImageSerializer(serializers.ModelSerializer):
