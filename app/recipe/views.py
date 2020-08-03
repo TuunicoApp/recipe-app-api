@@ -27,7 +27,7 @@ class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
 
         return queryset.filter(
             user=self.request.user
-        ).order_by('-name').distinct()
+        ).order_by('id').distinct()
 
     def perform_create(self, serializer):
         """Create a new object"""
@@ -42,7 +42,7 @@ class TagViewSet(BaseRecipeAttrViewSet):
 
 class IngredientViewSet(BaseRecipeAttrViewSet):
     """Manage ingredients in the database"""
-    queryset = Ingredient.objects.all()
+    queryset = Ingredient.objects
     serializer_class = serializers.IngredientSerializer
 
 # https://www.django-rest-framework.org/api-guide/generic-views/#get_serializer_classself
