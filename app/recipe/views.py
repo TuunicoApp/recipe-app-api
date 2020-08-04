@@ -27,7 +27,7 @@ class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
 
         return queryset.filter(
             user=self.request.user
-        ).order_by('id').distinct()
+        ).order_by('-name').distinct()
 
     def perform_create(self, serializer):
         """Create a new object"""
